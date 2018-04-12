@@ -1,16 +1,16 @@
 package logica;
 
-public class ListaSimple {
+public class ListaSimple<T> implements Lista<T>{
 	
-	public Nodo primero;
+	public NodoSimple<T> primero;
 	public int size;
 	
-	public void add(Enemy valor) {
-		Nodo nuevo = new Nodo(valor);
+	public void add(T valor) {
+		NodoSimple<T> nuevo = new NodoSimple<T>(valor);
 		if(empty()==true) {
 			this.primero = nuevo;
 		}else {
-			Nodo temp = this.primero;
+			NodoSimple<T> temp = this.primero;
 			while(temp.getSiguiente() != null) {
 				temp = temp.getSiguiente();
 			}
@@ -21,18 +21,26 @@ public class ListaSimple {
 	public boolean empty() {
 		return this.primero == null;
 	}
-	public void delete(Enemy valor) {
+	public void delete(T valor) {
 		if(primero.getValor() == valor) {
 			this.primero = primero.getSiguiente();
 		}else {
-			Nodo temp = this.primero;
+			NodoSimple<T> temp = this.primero;
 			while(temp.getSiguiente().getValor() != valor) {
 				temp = temp.getSiguiente();
 			}
-			Nodo siguiente = temp.getSiguiente().getSiguiente();
+			NodoSimple<T> siguiente = temp.getSiguiente().getSiguiente();
 			temp.setSiguiente(siguiente);
 		}
 		this.size ++;
+	}
+	@Override
+	public Nodo<T> getPrimero() {
+		return primero;
+	}
+	@Override
+	public Nodo<T> getUltimo() {
+		return null;
 	}
 	
 }

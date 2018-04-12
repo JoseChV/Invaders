@@ -1,13 +1,13 @@
 package logica;
 
-public class ListaDoble {
+public class ListaDoble<T> implements Lista<T>{
 
-	public NodoDoble primero;
-	public NodoDoble ultimo;
+	public NodoDoble<T> primero;
+	public NodoDoble<T> ultimo;
 	public int size;
 	
-	public void add(Enemy valor) {
-		NodoDoble nuevo = new NodoDoble(valor);
+	public void add(T valor) {
+		NodoDoble<T> nuevo = new NodoDoble<T>(valor);
 		if(empty()) {
 			this.primero = nuevo;
 			this.ultimo = nuevo;
@@ -21,14 +21,14 @@ public class ListaDoble {
 	public boolean empty() {
 		return this.primero == null;
 	}
-	public void delete(Enemy valor) {
+	public void delete(T valor) {
 		if(primero.getValor() == valor) {
 			this.primero = primero.getSiguiente();
 			if(this.primero!=null) {
 				this.primero.setAnterior(null);
 			}
 		}else {
-			NodoDoble temp = this.primero;
+			NodoDoble<T> temp = this.primero;
 			if(ultimo.getValor()==valor) {
 				ultimo.getAnterior().setSiguiente(null);
 			}else {
@@ -41,5 +41,13 @@ public class ListaDoble {
 		}
 		this.size --;
 		
+	}
+	@Override
+	public Nodo<T> getPrimero() {
+		return primero;
+	}
+	@Override
+	public Nodo<T> getUltimo() {
+		return ultimo;
 	}
 }

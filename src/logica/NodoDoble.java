@@ -1,31 +1,31 @@
 package logica;
 
-public class NodoDoble {
-	private Enemy valor;
-	private NodoDoble siguiente;
-	private NodoDoble anterior;
+public class NodoDoble<T> implements Nodo<T>{
+	private T valor;
+	private NodoDoble<T> siguiente;
+	private NodoDoble<T> anterior;
 	
-	public NodoDoble(Enemy valor) {
+	public NodoDoble(T valor) {
 		this.valor = valor;
 		this.siguiente = null;
 		this.anterior = null;
 	}
-	public Enemy getValor() {
+	public T getValor() {
 		return this.valor;
 	}
-	public void setValor(Enemy valor) {
+	public void setValor(T valor) {
 		this.valor = valor;
 	}
-	public void setSiguiente(NodoDoble siguiente) {
+	public void setSiguiente(NodoDoble<T> siguiente) {
 		this.siguiente = siguiente;
 	}
-	public NodoDoble getSiguiente() {
+	public NodoDoble<T> getSiguiente() {
 		return this.siguiente;
 	}
-	public NodoDoble getAnterior() {
+	public NodoDoble<T> getAnterior() {
 		return this.anterior;
 	}
-	public void setAnterior(NodoDoble anterior) {
+	public void setAnterior(NodoDoble<T> anterior) {
 		this.anterior = anterior;
 	}
 }

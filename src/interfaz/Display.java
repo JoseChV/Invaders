@@ -11,7 +11,7 @@ public class Display {
 	public Display() {
 		createDisplay();
 	}
-	private void createDisplay() {
+	private void createDisplay() { 
 		frame = new JFrame("Invaders");
 		frame.setSize(1300, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,12 +24,18 @@ public class Display {
 		canvas.setMinimumSize(new Dimension(1300,650));
 		canvas.setMaximumSize(new Dimension(1300,650));
 		
+		canvas.setFocusable(false);
+		
 		frame.add(canvas);
 		frame.pack();
 	}
 	
 	public Canvas getCanvas() {
 		return this.canvas;
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 
 }
