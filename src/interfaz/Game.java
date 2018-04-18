@@ -11,7 +11,7 @@ public class Game implements Runnable{
 	private Thread thread; 
 	private boolean running = false;
 	private BufferStrategy buffer;
-	private Graphics graphics;
+	private Graphics g;
 	private KeyManager keyManager;
 	
 	//private EnemyFactory factory;
@@ -52,17 +52,17 @@ public class Game implements Runnable{
 			display.getCanvas().createBufferStrategy(3);
 			return;
 		}
-		graphics = buffer.getDrawGraphics();
-		graphics.clearRect(0, 0, 1300, 650);
+		g = buffer.getDrawGraphics();
+		g.clearRect(0, 0, 1300, 650);
 		
-		graphics.drawImage(Assets.bg, 0, 0, null);
+		g.drawImage(Assets.bg, 0, 0, null);
 		
 		if(State.getState() != null) {
-			State.getState().render(graphics);
+			State.getState().render(g);
 		}
 		
 		buffer.show();
-		graphics.dispose();
+		g.dispose();
 	}
 	
 	public void run() {

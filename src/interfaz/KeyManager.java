@@ -16,7 +16,7 @@ public class KeyManager implements KeyListener{
 	public void tick() {
 		left = keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_RIGHT];
-		space = keys[KeyEvent.VK_SPACE];  
+		space = keys[KeyEvent.VK_SPACE];
 	}
 
 	@Override

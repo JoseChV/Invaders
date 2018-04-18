@@ -14,21 +14,18 @@ public class BulletControl {
 		this.game = game;
 	}
 	
-	public void addBullet( float x, float y) {
-		lista.add(new Bullet(game, x, y, 19, 34));
+	public void addBullet( float f, float y) {
+		lista.add(new Bullet(game, f, y, 19, 34));
 	} 
 	
 	public void removeBullet(Bullet bullet) {
 		lista.delete(bullet);
 	} 
-	public void update(Graphics graphics) {
+	public void update(Graphics g) {
 		for(Nodo<Bullet> b = lista.getPrimero();b != null;b = b.getSiguiente() ) {
 			b.getValor().tick();
-			b.getValor().render(graphics);
-			if(b.getValor().getY()<-20) {
-				this.removeBullet(b.getValor());
-			}
+			b.getValor().render(g);
 		}
 	}
-	
 }
+

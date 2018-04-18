@@ -39,6 +39,7 @@ public class ListaDobleCirc<T> implements Lista<T>{
 			temp.getSiguiente().setAnterior(temp.getAnterior());
 		}
 		size --;
+		System.out.println(size);
 		
 	}
 	@Override
@@ -47,7 +48,6 @@ public class ListaDobleCirc<T> implements Lista<T>{
 	}
 	@Override
 	public Nodo<T> getUltimo() {
-		// TODO Auto-generated method stub
-		return null;
+		return primero.getAnterior();
 	}
 }

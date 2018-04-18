@@ -14,8 +14,9 @@ public class Player extends Ship{
 	public Player(Game game,float x, float y, int width, int height, BulletControl bc) {
 		super(game, x, y, width, height);
 		this.hp = 3;
-		this.speed = 8.0f;
+		this.speed = 8;
 		this.bc = bc;
+		
 	}
 
 	@Override
@@ -24,8 +25,9 @@ public class Player extends Ship{
 		move();
 	}
 	@Override
-	public void render(Graphics graphics) {
-		graphics.drawImage(Assets.player, (int)x, (int)y, null);
+	public void render(Graphics g) {
+		g.drawImage(Assets.player, (int)x, (int)y, null);
+		
 	}
 	
 	private void getInput() {
@@ -36,11 +38,13 @@ public class Player extends Ship{
 		if(game.getKeyManager().right) {
 			xMove = speed;
 		}if(game.getKeyManager().space) {
-			if(attSpeed%8 == 0) {
+			if(attSpeed%12 == 0) {
 				bc.addBullet(this.x+26, this.y);
 				attSpeed = 0;
 			}
 			attSpeed++;
+		}else {
+			attSpeed = 0;
 		}
 	}
 	public float getX() {

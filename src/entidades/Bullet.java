@@ -14,10 +14,11 @@ public class Bullet extends Entity{
 	}
 
 	public void tick() {
-		yMove = 9.0f;
+		yMove = 9;
 		xMove = 0;
 		move();
 	} 
+
 
 	public void render(Graphics graphics) {
 		graphics.drawImage(Assets.PA, (int)x, (int)y, null); 

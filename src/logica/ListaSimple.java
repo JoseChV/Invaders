@@ -40,7 +40,11 @@ public class ListaSimple<T> implements Lista<T>{
 	}
 	@Override
 	public Nodo<T> getUltimo() {
-		return null;
+		NodoSimple<T> temp = this.primero;
+		while(temp.getSiguiente()!=null) {
+			temp = temp.getSiguiente();
+		}
+		return temp;
 	}
 	
 }

@@ -13,7 +13,6 @@ public abstract class Ship extends Entity{
 	public Ship(Game game, float x, float y, int width, int height) {
 		super(game, x, y, width, height);
 		speed = 4.0f;
-		hp = 3;
 		
 	
 	}
@@ -31,7 +30,7 @@ public abstract class Ship extends Entity{
 		return speed;
 	}
 
-	public void setSpeed(float speed) {
+	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 	

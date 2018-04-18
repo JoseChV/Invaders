@@ -4,12 +4,15 @@ import java.awt.Graphics;
 
 import interfaz.Assets;
 import interfaz.Game;
+import logica.TileCreator;
 
 public class Banshee extends Enemy{
+	
+	public static String type = "menor";
 
-	public Banshee(Game game, float x, float y, int width, int height, char tileClass, int listPos) {
-		super(game, x, y, width, height, tileClass, listPos);
-		
+	public Banshee(Game game, TileCreator tc, float x, float y, int width, int height, int tileClass, int listPos) {
+		super(type, game, tc, x, y, width, height, tileClass, listPos);
+		this.hp = 3;
 	}
 
 	@Override
@@ -19,8 +22,12 @@ public class Banshee extends Enemy{
 	}
 
 	@Override
-	public void render(Graphics graphics) {
-		graphics.drawImage(Assets.banshee, (int)x, (int)y, null);
+	public void render(Graphics g) {
+		if(hp==1) {
+			g.drawImage(Assets.destBanshee, (int)x, (int)y, null);
+		}else {
+			g.drawImage(Assets.banshee, (int)x, (int)y, null);	
+		}
 	}
-
+	
 }

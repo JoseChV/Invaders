@@ -1,8 +1,8 @@
 package logica;
 
 public class ListaCirc<T> implements Lista<T>{
-	public NodoSimple<T> primero;
-	public int size;
+	private NodoSimple<T> primero;
+	private int size;
 	
 	public void add(T valor) {
 		NodoSimple<T> nuevo = new NodoSimple<T>(valor);
@@ -50,9 +50,12 @@ public class ListaCirc<T> implements Lista<T>{
 	}
 	@Override
 	public Nodo<T> getUltimo() {
-		// TODO Auto-generated method stub
-		return null;
+		NodoSimple<T> temp = this.primero;
+		while(temp.getSiguiente() != this.primero) {
+			temp = temp.getSiguiente();
+		}
+		return temp;
 	}
+}
 	
 
-}
