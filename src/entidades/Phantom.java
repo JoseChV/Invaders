@@ -10,8 +10,8 @@ public class Phantom extends Enemy {
 	
 	public static String type = "boss";
 	
-	public Phantom(Game game, TileCreator tc, float x, float y, int width, int height, int tileClass, int listPos) {
-		super(type, game, tc, x, y, width, height, tileClass, listPos);
+	public Phantom(Game game, TileCreator tc, float x, float y, int width, int height, int tileClass, float radius, double angle) {
+		super(type, game, tc, x, y, width, height, tileClass, radius, angle);
 		this.hp = 5;
 	}
 

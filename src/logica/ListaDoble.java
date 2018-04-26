@@ -29,18 +29,20 @@ public class ListaDoble<T> implements Lista<T>{
 			}
 		}else {
 			NodoDoble<T> temp = this.primero;
-			if(ultimo.getValor()==valor) {
-				ultimo.getAnterior().setSiguiente(null);
-			}else {
-				while(temp.getValor() != valor) {
-					temp = temp.getSiguiente();
-				}
-				temp.getAnterior().setSiguiente(temp.getSiguiente());
+			while(temp.getValor() != valor) {
+				temp = temp.getSiguiente();
 			}
-				
+			NodoDoble<T> siguiente = temp.getSiguiente();
+			if(siguiente==ultimo) {
+				ultimo = temp.getAnterior();
+				ultimo.setSiguiente(null);
+			}else {
+				temp.getAnterior().setSiguiente(siguiente);
+			}
 		}
+
 		this.size --;
-		
+
 	}
 	@Override
 	public Nodo<T> getPrimero() {

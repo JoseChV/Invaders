@@ -26,11 +26,15 @@ public class ListaSimple<T> implements Lista<T>{
 			this.primero = primero.getSiguiente();
 		}else {
 			NodoSimple<T> temp = this.primero;
-			while(temp.getSiguiente().getValor() != valor) {
-				temp = temp.getSiguiente();
+			if (temp.getSiguiente()!=null){
+				while(temp.getSiguiente().getValor() != valor) {
+					temp = temp.getSiguiente();
+				}
+				if(temp.getSiguiente() != null) {
+					NodoSimple<T> siguiente = temp.getSiguiente().getSiguiente();
+					temp.setSiguiente(siguiente);
+				}
 			}
-			NodoSimple<T> siguiente = temp.getSiguiente().getSiguiente();
-			temp.setSiguiente(siguiente);
 		}
 		this.size ++;
 	}

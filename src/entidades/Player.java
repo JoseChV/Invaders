@@ -33,10 +33,18 @@ public class Player extends Ship{
 	private void getInput() {
 		xMove = 0;
 		if(game.getKeyManager().left) {
-			xMove = -speed;
+			if(x<=0) {
+				xMove = 0;
+			}else {
+				xMove = -speed;				
+			}
 		}
 		if(game.getKeyManager().right) {
-			xMove = speed;
+			if(x+width>=1300) {
+				xMove = 0;
+			}else {
+				xMove = speed;				
+			}
 		}if(game.getKeyManager().space) {
 			if(attSpeed%12 == 0) {
 				bc.addBullet(this.x+26, this.y);

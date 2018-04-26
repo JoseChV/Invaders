@@ -3,7 +3,6 @@ package logica;
 public interface Lista<T> {
 	
 
-
 	void add(T enemy);
 	
 	void delete(T enemy);

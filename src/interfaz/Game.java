@@ -3,7 +3,6 @@ package interfaz;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-//import logica.EnemyFactory;
 
 public class Game implements Runnable{
 	
@@ -13,25 +12,30 @@ public class Game implements Runnable{
 	private BufferStrategy buffer;
 	private Graphics g;
 	private KeyManager keyManager;
+	private MouseManager mouseManager;
 	
-	//private EnemyFactory factory;
 	
-	private State gameState;
-	private State menuState;
+	public State gameState;
+	public State menuState;
 	
 	public Game() {
 		keyManager = new KeyManager();
+		mouseManager = new MouseManager();
 		 
 	}
 	
 	private void init() {
 		display = new Display();
 		display.getFrame().addKeyListener(keyManager);
+		display.getFrame().addMouseListener(mouseManager);
+		display.getFrame().addMouseMotionListener(mouseManager);
+		display.getCanvas().addMouseListener(mouseManager);
+		display.getCanvas().addMouseMotionListener(mouseManager);
 		Assets.init();
 		
 		gameState = new GameState(this);
 		menuState = new MenuState(this);
-		State.setState(gameState);
+		State.setState(menuState);
 		
 		
 	}
@@ -55,7 +59,7 @@ public class Game implements Runnable{
 		g = buffer.getDrawGraphics();
 		g.clearRect(0, 0, 1300, 650);
 		
-		g.drawImage(Assets.bg, 0, 0, null);
+		
 		
 		if(State.getState() != null) {
 			State.getState().render(g);
@@ -76,7 +80,6 @@ public class Game implements Runnable{
 		long now = 0;
 		long lastTime = System.nanoTime();
 		long timer = 0;
-		int ticks = 0;
 		
 		//Loop principal del juego
 		while(running) {
@@ -88,11 +91,9 @@ public class Game implements Runnable{
 			if(delta >= 1) {
 				tick();
 				render();
-				ticks++;
 				delta --;
 			}
 			if(timer>=1000000000) {
-				ticks = 0;
 				timer = 0;
 			}
 		}
@@ -100,6 +101,10 @@ public class Game implements Runnable{
 	}
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public MouseManager getMouseManager() {
+		return mouseManager;
 	}
 	//Comienza el programa
 	public synchronized void start() {

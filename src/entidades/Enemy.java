@@ -6,41 +6,51 @@ import logica.TileCreator;
 public abstract class Enemy extends Ship{
 	
 	protected int tileClass;
-	protected int listPos;
 	protected TileCreator tc;
 	
-	protected float speed = 4.0f;
+	protected float speed;
 	protected double angle = 0;
-	protected int radius = 10;
+	protected float radius;
 	protected boolean flag;
 	
 	protected int hp;
 	public int cont= 0;
-	public String type;
 	
 	
 	
-	public Enemy(String type, Game game, TileCreator tc, float x, float y, int width, int height, int tileClass, int listPos) {
+	public Enemy(String type, Game game, TileCreator tc, float x, float y, int width, int height, int tileClass, float radius, double angle) {
 		super(game, x, y, width, height);
 		this.tileClass = tileClass;
-		this.listPos = listPos;
-		this.type = type;
+		this.radius = radius;
+		this.speed = 4.0f;
+		this.angle = angle;
 		
 	}
 	public void movePattern() {
 		angle += 0.1;
 		if(tileClass == 5) {
-			xMove = (int)(Math.cos(angle)*radius);
-			yMove = (int)(Math.sin(angle)*radius);
+			x = (int)(Math.cos(angle)*radius)+x;
+			y = (int)(Math.sin(angle)*radius)+ y;
 			
-		}else {
+		}else if(tileClass == 2){
+			xMove = speed;
+		}
+		else {
 			if(flag) {
-				xMove = speed; 
+				if(x<=0) {
+					xMove = -speed;
+				}else {
+					xMove = speed;				
+				}
 			}else {
-				xMove = -speed;
+				if(width+x>=1300) {
+					xMove = speed;
+				}else {
+					xMove = -speed;				
+				}
 			}
 		}
-		y += 0.5;
+		y += 0.4;
 	}
 	public boolean hit() {
 		if(cont%50==0) {
@@ -55,6 +65,12 @@ public abstract class Enemy extends Ship{
 	}
 	public void setFlag(boolean flag) {
 		this.flag = flag;
+	}
+	public boolean getFlag() {
+		return this.flag;
+	}
+	public void setSpeed(float speed) {
+		this.speed = speed;
 	}
 	
 	@Override
