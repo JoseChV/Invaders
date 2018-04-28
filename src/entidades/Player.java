@@ -5,12 +5,24 @@ import java.awt.Graphics;
 import interfaz.Assets;
 import interfaz.BulletControl;
 import interfaz.Game;
-
+/**
+ * Jugador
+ * @author Jose Andres Ch
+ *
+ */
 public class Player extends Ship{
 	
 	private BulletControl bc;
 	private int attSpeed = 0;
-
+	/**
+	 * Crea el jugador
+	 * @param game Juego
+	 * @param x Posicion en x
+	 * @param y Posicion en y
+	 * @param width Grosor
+	 * @param height Altura
+	 * @param bc Controlador de balas
+	 */
 	public Player(Game game,float x, float y, int width, int height, BulletControl bc) {
 		super(game, x, y, width, height);
 		this.hp = 3;
@@ -18,18 +30,26 @@ public class Player extends Ship{
 		this.bc = bc;
 		
 	}
-
+	
+	/**
+	 * ACtualiza sus variables
+	 */
 	@Override
 	public void tick() {
 		getInput();
 		move();
 	}
+	/**
+	 * Renderiza la nava
+	 */
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(Assets.player, (int)x, (int)y, null);
 		
 	}
-	
+	/**
+	 * Obtiene el input del teclado
+	 */
 	private void getInput() {
 		xMove = 0;
 		if(game.getKeyManager().left) {

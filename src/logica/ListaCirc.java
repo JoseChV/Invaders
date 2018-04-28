@@ -1,5 +1,12 @@
 package logica;
 
+import entidades.Enemy;
+/**
+ * Lista enlazada circularmente
+ * @author Jose Andres Ch
+ *
+ * @param <T> Tipo de dato a utilizar.
+ */
 public class ListaCirc<T> implements Lista<T>{
 	private NodoSimple<T> primero;
 	private int size;
@@ -44,6 +51,15 @@ public class ListaCirc<T> implements Lista<T>{
 		size --;
 		
 	}
+	public void print() {
+		NodoSimple<T> temp = this.primero;
+		while(temp.getSiguiente() != this.primero) {
+			System.out.println(temp.getValor());
+			temp = temp.getSiguiente();
+		}
+		System.out.println(temp);
+	}
+	
 	@Override
 	public Nodo<T> getPrimero() {
 		return primero;
@@ -55,6 +71,34 @@ public class ListaCirc<T> implements Lista<T>{
 			temp = temp.getSiguiente();
 		}
 		return temp;
+	}
+	@Override
+	public void bubbleSort() {
+		if(size>1) {
+			for(int i = 0; i < size; i++) {
+				NodoSimple<Enemy> prev = (NodoSimple<Enemy>) this.getUltimo();
+				NodoSimple<Enemy> current = (NodoSimple<Enemy>)this.primero;
+				NodoSimple<Enemy> next = current.getSiguiente();
+				for(int j = 0; j < size; j++) {
+					System.out.println(prev.getValor().getHp() + "   " +current.getValor().getHp() + "   " + next.getValor().getHp());
+					if(next == this.getUltimo()) {
+						j = size;
+						System.out.println("break");
+					}else if(next.getValor().getHp() > current.getValor().getHp()) {
+						System.out.println(true);
+						NodoSimple<Enemy> temp = current;
+						current.setValor(next.getValor());
+						next.setValor(temp.getValor());
+						
+					}
+					prev = prev.getSiguiente();
+					current = current.getSiguiente();
+					next = next.getSiguiente();
+					
+				}
+			}
+		}
+		
 	}
 }
 	

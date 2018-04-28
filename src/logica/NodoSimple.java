@@ -1,5 +1,10 @@
 package logica;
-
+/**
+ * Nodo que tiene un nodo siguiente
+ * @author Jose Andres Ch
+ *
+ * @param <T> Tipo de dato contenido
+ */
 public class NodoSimple<T> implements Nodo<T>{
 	private T valor;
 	private NodoSimple<T> siguiente;

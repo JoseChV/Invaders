@@ -1,11 +1,19 @@
 package logica;
-
+/**
+ * Lista doblemente enlazada
+ * @author Jose Andres Ch
+ *
+ * @param <T> tipo de dato que se va a manejar en la lista.
+ */
 public class ListaDoble<T> implements Lista<T>{
 
 	public NodoDoble<T> primero;
 	public NodoDoble<T> ultimo;
 	public int size;
 	
+	/**
+	 * @param <T> dato a ingresar en la lista.
+	 */
 	public void add(T valor) {
 		NodoDoble<T> nuevo = new NodoDoble<T>(valor);
 		if(empty()) {
@@ -18,9 +26,15 @@ public class ListaDoble<T> implements Lista<T>{
 		}
 		this.size ++;
 	}
+	/**
+	 * @return boolean Es true si la lista es vacia.
+	 */
 	public boolean empty() {
 		return this.primero == null;
 	}
+	/**
+	 * @param <T> dato a borrar de la lista.
+	 */
 	public void delete(T valor) {
 		if(primero.getValor() == valor) {
 			this.primero = primero.getSiguiente();
@@ -44,12 +58,32 @@ public class ListaDoble<T> implements Lista<T>{
 		this.size --;
 
 	}
+	/**
+	 * @param Nodo<T> Primer nodo de la lista
+	 */
 	@Override
 	public Nodo<T> getPrimero() {
 		return primero;
 	}
+	/**
+	 * @param Nodo<T> Ultimo nodo de la lista
+	 */
 	@Override
 	public Nodo<T> getUltimo() {
 		return ultimo;
+	}
+	/**
+	 * Imprime todos los elementos de la lista.
+	 */
+	@Override
+	public void print() {
+		NodoDoble<T> e = this.primero;
+		while(e != null) {
+			System.out.println(e);
+		}
+	}
+	@Override
+	public void bubbleSort() {
+		
 	}
 }

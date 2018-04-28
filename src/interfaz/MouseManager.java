@@ -4,6 +4,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * Maneja el estado del mouse
+ * @author Jose Andres Ch
+ *
+ */
 public class MouseManager implements MouseListener, MouseMotionListener{
 	public boolean leftPressed, rightPressed;
 	public int mouseX, mouseY;

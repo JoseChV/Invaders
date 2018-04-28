@@ -1,5 +1,10 @@
 package logica;
-
+/**
+ * Lista simplemente enlazada
+ * @author Jose Andres Ch
+ *
+ * @param <T> tipo de valor a utilizar 
+ */
 public class ListaSimple<T> implements Lista<T>{
 	
 	public NodoSimple<T> primero;
@@ -49,6 +54,17 @@ public class ListaSimple<T> implements Lista<T>{
 			temp = temp.getSiguiente();
 		}
 		return temp;
+	}
+	@Override
+	public void print() {
+		NodoSimple<T> e = this.primero;
+		while(e != null) {
+			System.out.println(e);
+		}		
+	}
+	@Override
+	public void bubbleSort() {
+		
 	}
 	
 }

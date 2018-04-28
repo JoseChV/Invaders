@@ -3,7 +3,11 @@ package interfaz;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-
+/**
+ * Juego Principal
+ * @author Jose Andres Ch
+ *
+ */
 public class Game implements Runnable{
 	
 	private Display display;
@@ -18,12 +22,17 @@ public class Game implements Runnable{
 	public State gameState;
 	public State menuState;
 	
+	/**
+	 * Crea el juego
+	 */
 	public Game() {
 		keyManager = new KeyManager();
 		mouseManager = new MouseManager();
 		 
 	}
-	
+	/**
+	 * Inicializa el display, los controladores y carga los archivos necesarios.
+	 */
 	private void init() {
 		display = new Display();
 		display.getFrame().addKeyListener(keyManager);
@@ -40,7 +49,9 @@ public class Game implements Runnable{
 		
 	}
 	
-	
+	/**
+	 * Actualiza todas las variables del juego
+	 */
 	private void tick() {
 		keyManager.tick();
 		
@@ -49,7 +60,9 @@ public class Game implements Runnable{
 		}
 		
 	}
-	
+	/**
+	 * Renderiza todos los objetos.
+	 */
 	private void render() {
 		buffer = display.getCanvas().getBufferStrategy();
 		if(buffer == null) {
@@ -68,7 +81,9 @@ public class Game implements Runnable{
 		buffer.show();
 		g.dispose();
 	}
-	
+	/**
+	 * Corre el juego
+	 */
 	public void run() {
 
 		init();	
@@ -106,7 +121,9 @@ public class Game implements Runnable{
 	public MouseManager getMouseManager() {
 		return mouseManager;
 	}
-	//Comienza el programa
+	/**
+	 * Comienza el programa
+	 */
 	public synchronized void start() {
 		if(running) {
 			return;
@@ -115,10 +132,9 @@ public class Game implements Runnable{
 		thread = new Thread(this);
 		thread.start();
 	}
-	
-	//Para el programa
-	
-
+	/**
+	 * Detiene el programa
+	 */
 	public synchronized void stop() {
 		if(!running) {
 			return;

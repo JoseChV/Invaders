@@ -1,5 +1,10 @@
 package logica;
-
+/**
+ * Nodo que contiene un nodo siguiente y uno anterior.
+ * @author Jose Andres Ch
+ *
+ * @param <T> Tipo de dato contenido en el.
+ */
 public class NodoDoble<T> implements Nodo<T>{
 	private T valor;
 	private NodoDoble<T> siguiente;

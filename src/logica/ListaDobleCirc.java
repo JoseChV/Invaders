@@ -1,5 +1,10 @@
 package logica;
-
+/**
+ * Lista circular doblemente enlazada
+ * @author Jose Andres Ch
+ *
+ * @param <T> Tipo de dato a utilizar.
+ */
 public class ListaDobleCirc<T> implements Lista<T>{
 	public NodoDoble<T> primero;
 	public int size;
@@ -49,5 +54,18 @@ public class ListaDobleCirc<T> implements Lista<T>{
 	@Override
 	public Nodo<T> getUltimo() {
 		return primero.getAnterior();
+	}
+	@Override
+	public void print() {
+		NodoDoble<T> temp = this.primero;
+		while(temp.getSiguiente() != this.primero) {
+			System.out.println(temp.getValor());
+			temp = temp.getSiguiente();
+		}
+		System.out.println(temp);		
+	}
+	@Override
+	public void bubbleSort() {
+		
 	}
 }
